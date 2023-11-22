@@ -1,5 +1,33 @@
 OpenCore Changelog
 ==================
+#### v0.9.6
+- Updated builtin firmware versions for SMBIOS and the rest
+- Fixed hang while generating boot entries on some systems
+- Added `efidebug.tool` support for 32-bit on 32-bit using GDB or LLDB
+- Fixed potential incorrect values in kernel image capabilities calculation
+- Added `FixupAppleEfiImages` quirk to allow booting Mac OS X 10.4 and 10.5 boot.efi images on modern secure image loaders
+
+#### v0.9.5
+- Fixed GUID formatting for legacy NVRAM saving
+- Fixed inability to open files in root directory on an NTFS filesystem
+- Fixed hang while unloading NTFS driver
+- Added UEFI quirk `ShimRetainProtocol`, allowing OpenCore chained from shim to verify Linux using shim's certificates
+- Added `OpenLegacyBoot` driver for supporting legacy OS booting
+- Added `shim-make.tool` to download and build rhboot/shim, for Linux SBAT and MOK integration
+
+#### v0.9.4
+- Fixed kext blocker `Exclude` strategy for prelinked on 32-bit versions of macOS
+- Fixed `ForceAquantiaEthernet` quirk on macOS 14 beta 2, thx @Shikumo
+- Added `InstanceIdentifier` to OpenCore and option to target `.contentVisibility` to specific instances (thx @dakanji)
+- Improved `LapicKernelPanic` quirk on legacy versions of macOS
+- Allowed `.contentVisibility` in same boot FS root locations as `.VolumeIcon.icns`, in order to survive macOS updates
+- Fixed incorrect core count on Silvermont Atom/Celeron processors
+- Fixed PM timer detection on Silvermont Atom/Celeron processors for TSC calculations
+- Fixed PM timer detection on non-Intel chipsets when booted through OpenDuet
+- Fixed `FadtEnableReset` on NVIDIA nForce chipset platforms
+- Added BlockIoDxe alternative OpenDuet variant
+- Added support for ATI cards when using `ForceResolution` option
+
 #### v0.9.3
 - Added `--force-codec` option to AudioDxe, thx @xCuri0
 - Downgraded additional warning message in normal operation of emulated NVRAM to info
