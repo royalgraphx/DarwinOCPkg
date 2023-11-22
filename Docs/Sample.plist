@@ -313,7 +313,7 @@
 			<false/>
 			<key>EnableSafeModeSlide</key>
 			<true/>
-			<key>EnableWriteUnprotector</key>	
+			<key>EnableWriteUnprotector</key>
 			<true/>
 			<key>FixupAppleEfiImages</key>
 			<false/>
