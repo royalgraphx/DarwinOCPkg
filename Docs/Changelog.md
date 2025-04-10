@@ -1,5 +1,37 @@
 OpenCore Changelog
 ==================
+#### v1.0.4
+- Added support for booting from static IPv4 address in OpenCore-specific HttpBootDxe
+- Added static IPv4 configuration options to OpenNetworkBoot
+- Removed `--` prefix from OpenNetworkBoot arguments (modify driver arguments if using this driver)
+- Updated `Unload` option to unload drivers in reverse of the order in which they were loaded
+- Fixed `MSR_IA32_TSC_ADJUST` access on unsupported CPUs (e.g. Virtualization.framework), thx @t0rr3sp3dr0
+- Downgraded WARN log level to INFO for ALREADY_STARTED in AudioDxe (restores ability to include DEBUG_WARN in HaltLevel if required when using this driver)
+- Added `ClearTaskSwitchBit` Booter quirk to fix crashes when using 32-bit versions of macOS on Hyper-V Gen2 VMs
+- Fixed `ProvideCurrentCpuInfo` and CPUID patching on older versions of macOS 10.4
+- Removed ACPI0007 objects from `SSDT-HV-DEV.dsl`
+- Removed `SSDT-HV-DEV-WS2022.dsl` as it is no longer required
+- Added PCI class names to PCI device info dumping in `SysReport`
+
+#### v1.0.3
+- Fixed support for `AMD_CPU_EXT_FAMILY_1AH`, thx @Shaneee
+- Fixed EHCI handoff logic in OpenDuet, causing older machines to hang at start
+- Added Arrow Lake CPU detection
+- Fixed Raptor Lake CPU detection
+- Supported booting with TuneD in Fedora 41 in OpenLinuxBoot
+- Fixed failure of vault `sign.command` to insert signature in correct location in some circumstances
+- Added OpenNetworkBoot driver to support HTTP(S) and PXE boot
+- Supported DMG loading and verification (e.g. macOS Recovery) over HTTP(S) boot
+
+#### v1.0.2
+- Fixed error in macrecovery when running headless, thx @mkorje
+- Added support for `AMD_CPU_EXT_FAMILY_1AH`, thx @Shaneee
+- Updated builtin firmware versions for SMBIOS and the rest
+- Enabled `XcpmExtraMsrs MSR_MISC_PWR_MGMT` patch back on macOS 12+
+- Fixed `XcpmExtraMsrs MSR_MISC_PWR_MGMT` patch on macOS 15
+- Added `UEFI` `Unload` option to unload existing firmware drivers
+- Fixed boot device selection with VirtIO disk drives used for macOS installations
+
 #### v1.0.1
 - Updated code and added progress bar to macrecovery, thx @soyeonswife63
 - Bundled fat binary i386/x64 10.6+ compatible `nvramdump` with LogoutHook release
